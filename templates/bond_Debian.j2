@@ -4,6 +4,9 @@ auto {{ item.device }}
 {% if item.bootproto == 'dhcp' %}
 iface {{ item.device }} inet dhcp
 {% endif %}
+{% if item.bootproto == 'manual' %}
+iface {{ item.device }} inet manual
+{% endif %}
 {% if item.bootproto == 'static' %}
 iface {{ item.device }} inet static
 {% if item.address is defined %}

@@ -167,7 +167,8 @@ def bridge_check(context, interface):
                      (device, ", ".join(missing)))
 
     for port in interface_ports:
-        port_interface = {"device": port}
+        port_interface = {"device": port,
+                          "inactive_ok": interface.get("inactive_ok", False)}
         result = _interface_check(context, port_interface)
         if result["diff"]:
             return result
